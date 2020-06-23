@@ -1,0 +1,17 @@
+{
+  "name": "pi3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AlvaroEMatos",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "fs-js": "^1.0.6",
+    "mindb": "^0.8.1"
+  }
+}
