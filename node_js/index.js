@@ -143,7 +143,7 @@ function recoverData(db) {
 
         try {
             console.log('carregando DB do HD...');
-            content = JSON.parse(fs.readFileSync('data/' + collectionList[i] + ".txt"));
+            content = JSON.parse(fs.readFileSync('data/' + collectionList[i] + ".json"));
 
         } catch (err) {
             console.log("não foram encontrados arquivos no HD, iniciando coleção vazia...");
@@ -169,7 +169,7 @@ function writeData(db) {
         console.log('salvando DB no HD...');
 
         try {
-        fs.writeFileSync('data/' + collectionList[i] + ".txt", JSON.stringify(content))
+        fs.writeFileSync('data/' + collectionList[i] + ".json", JSON.stringify(content))
         
         } catch (err) {
             console.log("não foi possível escrever no HD, DB perdido...");
