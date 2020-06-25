@@ -80,11 +80,13 @@ app.get('/user-page/:username/', (req, res) => {
 });
 
 app.get('/results', (req, res) => {
-    const search = req.query.search;
+    const search = req.query.search.toLowerCase().replace(" ", "");
     var query = new Array();
-    
+
     query = query.concat(DBtest.products.find().where("name").eq(search).exec());
     query = query.concat(DBtest.products.find().where("brand").eq(search).exec());
+
+    console.log("Busca realizada com sucesso...");
     
     fs.readFile('testhtml/results.html', 'utf8', (err, data) => {
         if (err) {
@@ -117,7 +119,7 @@ app.listen(8080, () => {
         process.exit(2);
     });
     
-    //"kill pid" (exemplo: nodemon restart) // não funciona
+    //"kill pid" (exemplo: nodemon restart) //não funciona
     process.on('SIGUSR1', () => {
         process.exit(3);
     });
@@ -125,7 +127,7 @@ app.listen(8080, () => {
         process.exit(4);
     });
     
-    //excessões não capturadas // não funciona ??
+    //excessões não capturadas
     process.on('uncaughtException', (e) => {
         console.log('excessão não capturada...');
         console.log(e.stack);
