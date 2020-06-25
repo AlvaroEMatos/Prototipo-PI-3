@@ -1,21 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+const htmlParser = require('node-html-parser').parse;
+//const cookieParser = require('cookie-parser');
 const minDB = require ('mindb');
 const fs = require('fs-js');
 
+/////////////////////////////////////////////////
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+//app.use(cookieParser());
 
+////////////////////////////////////////////////
 minDB.create("DBtest");
 const DBtest = minDB.get("DBtest");
-DBtest.collection('users');
+
+DBtest.collection("users");
+DBtest.collection("products");
+
 recoverData(DBtest);
 
 
-
+///////////////////////////////////////////////////
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/testhtml/home.html');
 });
@@ -74,11 +80,27 @@ app.get('/user-page/:username/', (req, res) => {
 });
 
 app.get('/results', (req, res) => {
-    res.sendFile(__dirname + '/testhtml/results.html')
+    const search = req.query.search;
+    var query = new Array();
+    
+    query = query.concat(DBtest.products.find().where("name").eq(search).exec());
+    query = query.concat(DBtest.products.find().where("brand").eq(search).exec());
+    
+    fs.readFile('testhtml/results.html', 'utf8', (err, data) => {
+        if (err) {
+            console.log("'results.html' não existe...")
+        }
+        const root = htmlParser(data);
+
+        for (let i = 0; i < query.length; i++) {
+            root.querySelector('div.results').appendChild((i + 1) + ". :  " + query[i].name + "_________" + query[i].brand + "<br>");
+        }
+        res.send(root.toString());
+    });
 });
 
 
-
+//////////////////////////////////////////////////////////////////////////
 app.listen(8080, () => {
     console.log("server rodando em: http://localhost:8080");
 
@@ -95,7 +117,7 @@ app.listen(8080, () => {
         process.exit(2);
     });
     
-    //"kill pid" (exemplo: nodemon restart)
+    //"kill pid" (exemplo: nodemon restart) // não funciona
     process.on('SIGUSR1', () => {
         process.exit(3);
     });
@@ -103,7 +125,7 @@ app.listen(8080, () => {
         process.exit(4);
     });
     
-    //excessões não capturadas
+    //excessões não capturadas // não funciona ??
     process.on('uncaughtException', (e) => {
         console.log('excessão não capturada...');
         console.log(e.stack);
@@ -111,8 +133,10 @@ app.listen(8080, () => {
     });
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////
 function recoverData(db) {
     const collectionList = db.list();
+    //console.log(collectionList);
 
     for (let i = 0; i < collectionList.length; i++) {
         let content;
@@ -122,11 +146,10 @@ function recoverData(db) {
             content = JSON.parse(fs.readFileSync('data/' + collectionList[i] + ".txt"));
 
         } catch (err) {
-            console.log(err);
             console.log("não foram encontrados arquivos no HD, iniciando coleção vazia...");
+            continue;
         }
-
-        console.log(content);
+        //console.log(content);
 
         for (let j = 0; j < content.length; j++) {
             if (!(content === undefined)) {
@@ -138,6 +161,7 @@ function recoverData(db) {
 
 function writeData(db) {
     const collectionList = db.list();
+    //console.log(collectionList);
 
     for (let i = 0; i < collectionList.length; i++) {
         let content = db.get(collectionList[i]).values();
@@ -148,8 +172,8 @@ function writeData(db) {
         fs.writeFileSync('data/' + collectionList[i] + ".txt", JSON.stringify(content))
         
         } catch (err) {
-            console.log(err);
             console.log("não foi possível escrever no HD, DB perdido...");
+            continue;
         }
     }
 }
