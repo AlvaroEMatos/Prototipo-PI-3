@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aplicativo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- StyleSeet CSS -->
+    <link href="/static/css/home_style.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/js/jquery/jquery.slim.min.js"></script>
+    <script src="/static/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+  </head>
+
+  <body>
+    <div id="logocontainer">
+      <img src="/static/images/logo.png">
+    </div>
+
+    <input type="checkbox" id="check">
+    <label id="icone" for="check"><img src="/static/images/icone.png"></label>
+
+    <div class="barra">
+      <nav>
+
+        <a href="">
+          <div class="link" ><img src="/static/images/home.png" width="35" height="35">Home</div>
+        </a>
+
+        <a href="#"data-toggle="modal" data-target="#meuModal3">
+          <div class="link"> <img src="/static/images/file.png" width="35" height="35">Meus Dados</div>
+        </a>
+
+        <a href="#"data-toggle="modal" data-target="#meuModal2">
+          <div class="link"> <img src="/static/images/pedido.png" width="35" height="35">Lista de Pedidos</div>
+        </a>
+
+        <a href="">
+          <div class="link"> <img src="/static/images/timer.png" width="35" height="35">Status Pedidos</div>
+        </a>
+
+        <a href="/">
+          <div id="exitbtn"> <img src="/static/images/exit.png" width="35" height="35">Sair</div>
+        </a>
+
+      </nav>
+    </div>
+
+    <!--Dados clientes-->
+    <div id="meuModal3" class="modal fade" role="dialog">
+      <div class="modal-dialog ">
+
+        <!-- Conteúdo do modal-->
+        <div class="modal-content">
+
+          <!-- Cabeçalho do modal -->
+          <div class="modal-header">
+            <h4 class="modal-title">Meus dados</h4>
+          </div>
+
+          <!-- Corpo do modal -->
+          <div class="modal-body">
+          
+            <form>
+              <br>
+              <label>Nome:</label>
+              <br>
+              <input type="text" name="Nome" class="form-control is-valid" id="validationServer01" placeholder="Nome" value="Leandro Benassi valença Araujo" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+
+              <br>
+              <label>Email:</label>
+              <br>
+              <input type="text" name="Email" class="form-control is-valid" id="validationServer01" placeholder="Email" value="computfast@hotmail.com" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+
+              <br>
+              <label>Fone:</label>
+              <br>
+              <input type="text" name="fone" class="form-control is-valid" id="validationServer01" placeholder="Email" value="(13)996520019" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+
+              <br>
+              <label>Rua:</label>
+              <br>
+              <input type="text" name="rua" class="form-control is-valid" id="validationServer01" placeholder="Rua" value="Marginal 31" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+
+              <br>
+              <label>Bairro:</label>
+              <br>
+              <input type="text" name="bairro" class="form-control is-valid" id="validationServer01" placeholder="Bairro" value="Estância dos Eucaliptos" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+
+              <br>
+              <label>Nº:</label>
+              <br>
+              <input type="text" name="numero" class="form-control is-valid" id="validationServer01" placeholder="Numero" value="275" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+        
+              <br>
+              <label>Cidade:</label>
+              <br>
+              <input type="text" name="cidade" class="form-control is-valid" id="validationServer01" placeholder="Cidade" value="Peruíbe" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+
+              <br>
+              <label>Usuário:</label>
+              <br>
+              <input type="text" name="usuario" class="form-control is-valid" id="validationServer01" placeholder="Usuario" value="Leandro" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+        
+              <br>
+              <label>Senha:</label>
+              <br>
+              <input type="text" name="senha" class="form-control is-valid" id="validationServer01" placeholder="Senha" value="Senha" required>
+
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+            </form>
+          </div>
+          
+          <!-- Rodapé do modal-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Editar</button> 
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- fim Modal -->
+
+
+
+
+    <!-- Lista de pedidos -->
+    <div id="meuModal2" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Conteúdo do modal-->
+        <div class="modal-content">
+  
+          <!-- Cabeçalho do modal -->
+          <div class="modal-header">
+
+            <h4 class="modal-title">Lista de Pedidos</h4>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+
+          </div>
+
+          <!-- Corpo do modal -->
+          <div class="modal-body">
+
+            <div class="table-overflow">
+              <table class="table">
+                <thead class="thead-info">
+                  <tr>
+                    <th scope="col">cód</th>
+                    <th scope="col">produto</th>
+                    <th scope="col">qtd</th>
+                    <th scope="col">valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="col">001</th>
+                    <td>Cesta Básica</td>
+                    <td><input type="number" name="numero"style="width:42px;" value="1"></td>
+                    <td>R$ 120,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p></p>
+            <p>Meus pedidos</p>
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Valor Total: R$ 120,00</strong>
+            </div>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- Rodapé do modal-->
+          <div class="modal-footer">
+
+            <select class="custom-control custom-select custom-control-inline">
+              <option>Tem Troco</option>
+              <option>Sim</option>
+              <option>Não</option>
+            </select>
+
+            <input type="text" name="usuario" class="form-control is-valid" id="validationServer01" placeholder="Troco para quanto">
+
+            <div class="custom-control custom-radio custom-control-inline">
+
+              <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline1">Dinheiro</label>
+
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline2">Cartão</label>
+            </div>
+
+              <button type="button" class="btn btn-success" data-dismiss="modal">Finalizar Compra</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

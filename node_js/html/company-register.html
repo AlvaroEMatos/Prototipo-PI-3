@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cadastro cliente</title>
+
+     <!--Bootstrap core CSS -->
+     <link href="/static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+     <!--stylesheet-->
+     <link href="/static/css/register2_style.css" rel="stylesheet">
+ 
+     <!-- Bootstrap core JavaScript -->
+     <script src="/static/js/jquery/jquery.slim.min.js"></script>
+     <script src="/static/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+  </head>
+  <body>
+
+    <div id="logo-container">
+      
+      <h3>Cadastro de Empresas</h3>
+      <img src="/static/images/logo.png">
+        
+    </div>
+
+    <section class="container-fluid" style="margin-left:40px;margin-top:20px;margin-right:40px; margin: auto; width:60%">
+      <section class="row justify-content-center" style="margin-top:100px;">
+        <section class="col-12 col-sm-6 col-md-4">
+
+          <form action="/register/company" method="POST">
+
+            <div class="form-group">
+              <label for="username">Usuário</label>
+              <input type="email" class="form-control is-valid" id="username" name="username" placeholder="Email">
+            </div>
+    
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input type="password" class="form-control is-valid" id="password" name="password" placeholder="Senha">
+            </div>
+    
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control is-valid" id="name" name="name" placeholder="Nome completo">
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control is-valid" id="email" name="email" placeholder="E-mail">
+            </div>
+      
+            <div class="form-group">
+              <label for="fone">Fone</label>
+              <input type="number" class="form-control is-valid" id="fone" name="fone" placeholder="Telefone">
+            </div>
+      
+            <div class="form-group">
+              <label for="street">Rua</label>
+              <input type="text" class="form-control is-valid " id="street" name="street" placeholder="Rua">
+            </div>
+      
+            <div class="form-group">
+              <label for="neighborhood">Bairro</label>
+              <input type="text" class="form-control is-valid" id="neighborhood" name="neighborhood" placeholder="Bairro">
+            </div>
+      
+            <div class="form-group">
+              <label for="city">Cidade</label>
+              <input type="text" class="form-control is-valid" id="city" name="city" placeholder="Cidade">
+            </div>
+      
+            <div class="form-group">
+              <label for="number">Nº</label>
+              <input type="number" class="form-control is-valid" id="number", name="number">
+            </div>
+      
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms">
+              <label class="form-check-label" for="terms">Aceito os termos</label>
+            </div>
+
+            <br>
+            <button id="confirm-btn" class="btn btn-info" type="button">Cadastrar</button>
+            <br>
+            <br>
+            <a href="/register"><button class="btn btn-danger" type="button">Voltar</button></a>
+            <br>
+            <br>
+            <br>
+          </form>
+        </section>
+      </section>
+    </section>
+
+    <script>
+      //validação dos inputs (não podem estar vazios)
+      $(document).ready(function() {
+        $("#confirm-btn").click(function(){
+          if(!($("input[type='checkbox']:checked").length)) {
+            alert("Aceite os termos para continuar");
+            return;
+          }
+
+          const inputs = $("input")
+          
+          for(let i = 0; i < inputs.length; i++) {
+            if(inputs.eq(i).val() == ""){
+              alert("Você deve preencher todos os campos");
+              return;
+            }
+          }
+
+          $("form").submit();
+        });
+      });
+    </script>
+  </body>
+
+</html>

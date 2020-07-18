@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ir para o Cadastro</title>
+
+     <!--Bootstrap core CSS -->
+    <link href="/static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!--stylesheet-->
+    <link href="/static/css/register1_style.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/js/jquery/jquery.slim.min.js"></script>
+    <script src="/static/js/bootstrap/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+
+    <div id="logo-container">
+      <img src="static/images/logo.png">
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+
+          <form action=/register method="POST">
+
+            <div class="form-check form-check-inline">
+              <input id="option1" name="option" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="client">
+              <label class="form-check-label" for="option1">Cliente</label>
+            </div>
+      
+            <div class="form-check form-check-inline">
+              <input id="option2" name="option" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="supplier">
+              <label class="form-check-label" for="option2">Fornecedor</label>
+            </div>
+      
+            <div class="form-check form-check-inline">
+              <input id="option3" name="option" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="company">
+              <label class="form-check-label" for="option3">Empresa</label>
+            </div>
+      
+            <div class="form-check form-check-inline">
+              <input id="option4" name="option" class="form-check-input" type="checkbox" id="inlineCheckbox4" value="deliveryman">
+              <label class="form-check-label" for="option4">Entregador</label>
+            </div>
+      
+            <div class="form-group">
+              <br>
+              <br>
+              <button id="confirm-btn" class="btn btn-info" type="button">Confirmar</button>
+              <br>
+              <br>
+              <a href="/">
+                <button class="btn btn-danger" type="button">Voltar</button>
+              </a>
+              </br>
+            </div>
+         
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //apenas um check box ativo
+      $('input[type="checkbox"]').on('click', function() {
+        $('input[type="checkbox"]').prop("checked", false);
+        $(this).prop("checked", true);;
+      });
+      //redireciona para a pagina de login correta
+      $(document).ready(function() {
+        $("#confirm-btn").click(function(){
+          var checkbox = $("input[type='checkbox']:checked");
+
+          if (checkbox.length){
+            window.location.replace("/register/" + checkbox.val());
+          }else {
+            alert("Selecione uma opção");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

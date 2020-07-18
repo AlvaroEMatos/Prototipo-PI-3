@@ -1,0 +1,143 @@
+*{
+    margin-top:2px;
+    margin:0;
+    padding:0;
+  }
+  body{
+
+    background-color:#f9f9f9;
+  }
+  #check{
+    margin-top:2px;
+    display:none;
+  }
+  #icone{
+    margin-top:2px;
+    cursor: pointer;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+
+  }
+
+  .barra{
+    
+    background-color:#B0C4DE;
+    height: 100%;
+    width: 300px;
+    position:absolute;
+    transition: all .2s linear;
+    left: -300px;
+
+  }
+nav{
+  
+  width: 100%;
+  position: absolute;
+  top: 60px;
+
+}
+nav a{
+  text-decoration: none;
+}
+
+.link{
+  background-color: #00BFFF;
+  padding: 20px;
+  font-family: 'Arial';
+  font-size: 12pt;
+  transition: all .2s linear;
+  color: #f4f4f9;
+  border-bottom: 2px solid #222; 
+  opacity: 0;
+  margin-top: 200px;
+
+}
+
+.link:hover{
+  background-color: #050542;
+
+}
+
+
+
+#check:checked ~ .barra {
+   transform: translateX(300px);
+
+}
+
+#check:checked ~ .barra nav a .link {
+   opacity: 1;
+   margin-top: 0px;
+   transition-delay: .2s;
+
+}
+
+.table-overflow {
+    max-height:400px;
+    overflow-x:auto;
+}
+
+#exitbtn {
+  background-color: #B22222;
+  color: white;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+#logocontainer {
+    background: #005C97;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100vw;
+    height: 30vh;
+}
+
+#logocontainer > img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#resultscontainer {
+    width: 80vw;
+    height: 68vh;
+    margin-left: 15vw;
+    margin-right: 5vw;
+    margin-top: 2vh;
+    font-family: Arial;
+}
+
+#resultscontainer > form > div {
+    width: 70%;
+    height: 40px;
+}
+
+
+#resultscontainer > form > button {
+    margin-left: 72%;
+    margin-top: -70px;
+}
+
+#resultscontainer > table {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    border-collapse: collapse;
+
+}
+
+#resultscontainer > table td {
+    border: 1px solid black;
+    padding-bottom: 5px;
+}
+
+#resultscontainer > table div {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#resultscontainer > table img {
+    height: 100px;
+    width: 100px;
+}
